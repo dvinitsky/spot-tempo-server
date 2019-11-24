@@ -70,7 +70,7 @@ app.post("/login", async (req, res) => {
       "https://accounts.spotify.com/api/token",
       qs.stringify({
         code: req.body.code,
-        redirect_uri: redirect_uri,
+        redirect_uri: req.body.redirect_uri,
         grant_type: "authorization_code"
       }),
       {
