@@ -1,11 +1,9 @@
 const express = require("express");
-const path = require("path");
 const PORT = process.env.PORT || 5000;
 const bodyParser = require("body-parser");
 const axios = require("axios");
 const qs = require("querystring");
 
-const redirect_uri = "http://localhost:3000/";
 const client_secret = "c5082a4127ae4ae7b61dd87abe544784";
 const client_id = "200fe6a2e65643b4bada24a59cebc2cb";
 
