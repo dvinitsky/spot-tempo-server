@@ -36,24 +36,19 @@ let originPlaylistId;
 const app = express();
 app.use(bodyParser.json());
 
-// Serve static files from the React app
-// app.use(express.static(path.join(__dirname, "client/build")));
-
 app.get("/getAccessToken", (req, res) => {
-  console.log("it worked!!");
   return res.status(200).send(accessToken);
 });
 
-app.get("/auth", (req, res) => {
+app.get("/getAuthParams", (req, res) => {
   res.status(200).send(
-    "https://accounts.spotify.com/authorize?" +
-      qs.stringify({
-        response_type: "code",
-        client_id,
-        scope,
-        redirect_uri,
-        state: randomString
-      })
+    qs.stringify({
+      response_type: "code",
+      client_id,
+      scope,
+      // redirect_uri,
+      state: randomString
+    })
   );
 });
 
