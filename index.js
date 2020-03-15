@@ -34,6 +34,12 @@ let originPlaylistId;
 const app = express();
 app.use(bodyParser.json());
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 app.get("/getAccessToken", (req, res) => {
   return res.status(200).send(accessToken);
 });
@@ -185,7 +191,8 @@ const getPlaylistsAndUserData = async () => {
     playlists = playlistsResponse.data.items;
     userId = userResponse.data.id;
   } catch (error) {
-    return res.status(500).send("There has been an error.");
+    console.log(error.message);
+    // return res.status(500).send("There has been an error.");
   }
 };
 
